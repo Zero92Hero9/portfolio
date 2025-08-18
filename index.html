@@ -119,6 +119,117 @@
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
         }
 
+        /* Search Bar Styles */
+        .search-container {
+            position: sticky;
+            top: 20px;
+            z-index: 100;
+            margin-bottom: 30px;
+        }
+
+        .search-bar {
+            background: var(--card-bg);
+            border-radius: 25px;
+            padding: 15px 25px;
+            border: 2px solid rgba(0, 212, 170, 0.3);
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .search-bar:focus-within {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 20px rgba(0, 212, 170, 0.3);
+        }
+
+        .search-icon {
+            color: var(--primary-color);
+            font-size: 1.2em;
+        }
+
+        .search-input {
+            flex: 1;
+            background: none;
+            border: none;
+            color: var(--text-primary);
+            font-size: 1.1em;
+            outline: none;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .search-input::placeholder {
+            color: var(--text-secondary);
+        }
+
+        .search-clear {
+            background: none;
+            border: none;
+            color: var(--text-secondary);
+            cursor: pointer;
+            font-size: 1.1em;
+            padding: 5px;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+        }
+
+        .search-clear:hover {
+            background: rgba(255, 107, 107, 0.2);
+            color: var(--secondary-color);
+        }
+
+        .search-results {
+            margin-top: 15px;
+            background: var(--card-bg);
+            border-radius: 15px;
+            border: 1px solid rgba(0, 212, 170, 0.3);
+            max-height: 300px;
+            overflow-y: auto;
+            display: none;
+        }
+
+        .search-result-item {
+            padding: 15px 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .search-result-item:hover {
+            background: rgba(0, 212, 170, 0.1);
+        }
+
+        .search-result-item:last-child {
+            border-bottom: none;
+        }
+
+        .search-result-title {
+            color: var(--primary-color);
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .search-result-content {
+            color: var(--text-secondary);
+            font-size: 0.9em;
+            line-height: 1.4;
+        }
+
+        .search-highlight {
+            background: rgba(0, 212, 170, 0.3);
+            color: var(--primary-color);
+            padding: 2px 4px;
+            border-radius: 4px;
+            font-weight: 600;
+        }
+
+        .no-results {
+            padding: 20px;
+            text-align: center;
+            color: var(--text-secondary);
+        }
+
         .terminal-bar {
             background: #2d2d44;
             padding: 12px 20px;
@@ -212,6 +323,17 @@
             background: rgba(0, 212, 170, 0.2);
             transform: translateY(-2px);
             box-shadow: 0 10px 20px rgba(0, 212, 170, 0.2);
+        }
+
+        .phone-display {
+            cursor: text;
+            user-select: all;
+        }
+
+        .phone-display:hover {
+            background: rgba(0, 212, 170, 0.15) !important;
+            transform: none !important;
+            box-shadow: none !important;
         }
 
         /* Unique Card Design */
@@ -626,6 +748,15 @@
     </div>
 
     <div class="container">
+        <div class="search-container">
+            <div class="search-bar">
+                <div class="search-icon">🔍</div>
+                <input type="text" class="search-input" placeholder="Search skills, experience, technologies..." id="searchInput">
+                <button class="search-clear" id="clearSearch" style="display: none;">✕</button>
+            </div>
+            <div class="search-results" id="searchResults"></div>
+        </div>
+
         <div class="terminal-header">
             <div class="terminal-bar">
                 <div class="terminal-dot"></div>
@@ -644,9 +775,9 @@
                             <a href="mailto:emailrkokku@gmail.com?subject=Let's Connect&body=Hello Raghu,%0D%0A%0D%0AI came across your portfolio and would like to discuss..." class="contact-item">
                                 📧 Email
                             </a>
-                            <a href="tel:+18322166103" class="contact-item">
-                                📱 Phone
-                            </a>
+                            <div class="contact-item phone-display">
+                                📱 (832) 216-6103
+                            </div>
                             <a href="https://www.linkedin.com/in/knowraghukokku" target="_blank" class="contact-item">
                                 💼 LinkedIn
                             </a>
